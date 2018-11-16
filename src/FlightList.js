@@ -11,7 +11,7 @@ class ArrivalList extends PureComponent {
                 key = {index.toString()}
                 type={i.type}
                 time={i.departure.scheduledTime.slice(11, -7)}
-                flightNumber={i.flight.number.slice(-3)}
+                flightNumber={i.flight.number}
                 airlineName={i.airline.name}
                 status={i.status}
               />

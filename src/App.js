@@ -94,8 +94,8 @@ export default class App extends PureComponent {
   };
 
   searchFlights = e => {
-    if(e.target.value.length === 3) {
-      let searchedFlights = this.state.flights.filter(i => i.flight.number === e.target.value);
+    if(e.target.value.length >= 3) {
+      let searchedFlights = this.state.flights.filter(i => i.flight.number.includes(e.target.value));
       this.setState({flights: searchedFlights});
     }
     else {
