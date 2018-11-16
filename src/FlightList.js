@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import FlightCard from './flightCard.js';
+import FlightListItem from './FlightListItem.js';
 
 class ArrivalList extends PureComponent {
   render() {
@@ -7,7 +7,7 @@ class ArrivalList extends PureComponent {
       <div>
         {
           this.props.data.map((i, index) => {
-            return <FlightCard
+            return <FlightListItem
                 key = {index.toString()}
                 type={i.type}
                 time={i.departure.scheduledTime.slice(11, -7)}

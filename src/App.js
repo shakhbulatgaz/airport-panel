@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import InfoRow from './infoRow';
 import FlightList from './FlightList';
 
 const MainContainer = styled.div`
@@ -37,6 +36,21 @@ const SearchBar = styled.input`
   font-family: 'Comfortaa', sans-serif;
   border: 1px solid black;
   outline: none;
+`;
+
+const ListHeaderRow = styled.div`
+  display: flex;
+  width: 100%;
+  height: 40px;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: bold;
+  padding-top: 15px;
+`;
+
+const ListHeaderColumn  = styled.div`
+  text-align: center;
+  width: 20%;
+  height: 100%;
 `;
 
 export default class App extends PureComponent {
@@ -98,7 +112,13 @@ export default class App extends PureComponent {
           <Button onClick={() => this.changeInfo('delayed')}>Задержанные</Button>
         </ButtonContainer>
         <SearchBar placeholder='&#128269; Введите трехзначный номер рейса для поиска...' onChange={e => this.searchFlights(e)}/>
-        <InfoRow/>
+        <ListHeaderRow>
+          <ListHeaderColumn>Type</ListHeaderColumn>
+          <ListHeaderColumn>Scheduled Time</ListHeaderColumn>
+          <ListHeaderColumn>Flight Number</ListHeaderColumn>
+          <ListHeaderColumn>Airline Name</ListHeaderColumn>
+          <ListHeaderColumn>Status</ListHeaderColumn>
+        </ListHeaderRow>
         <FlightList data={this.state.flights}/>
       </MainContainer>
     )
