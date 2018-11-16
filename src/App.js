@@ -62,7 +62,7 @@ export default class App extends PureComponent {
   componentDidMount() {
     const request = new XMLHttpRequest();
     // Берем все рейсы, прилетающие в аэропорт Внуково
-    request.open('GET', 'http://aviation-edge.com/v2/public/timetable?key=82b9d3-0b3bae&iataCode=VKO&type=arrival');
+    request.open('GET', 'http://aviation-edge.com/v2/public/timetable?key=c8ec78-e2dae2&iataCode=VKO&type=arrival');
     request.onload = () => {
       let data = JSON.parse(request.response);
       //Также делаем копию данных, чтобы вернуться к ней после поиска рейсов
@@ -77,14 +77,14 @@ export default class App extends PureComponent {
       //В API нет информации о задержанных рейсах
       //Поэтому мы берем все рейсы аэропорта и сравниваем их реальное время посадки/взлета с планируемым
       //Если они отличаются — значит самолет опаздывает
-      request.open('GET', 'http://aviation-edge.com/v2/public/timetable?key=82b9d3-0b3bae&iataCode=VKO');
+      request.open('GET', 'http://aviation-edge.com/v2/public/timetable?key=c8ec78-e2dae2&iataCode=VKO');
       request.onload = () => {
         let data = JSON.parse(request.response).filter(i => i.estimatedRunway !== i.actualRunway)
         this.setState({flights: data, flightsCopy: data});
       }
     }
     else {
-      request.open('GET', `http://aviation-edge.com/v2/public/timetable?key=82b9d3-0b3bae&iataCode=VKO&type=${type}`);
+      request.open('GET', `http://aviation-edge.com/v2/public/timetable?key=c8ec78-e2dae2&iataCode=VKO&type=${type}`);
       request.onload = () => {
         let data = JSON.parse(request.response);
         this.setState({flights: data, flightsCopy: data});
